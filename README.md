@@ -60,9 +60,6 @@ Continuous compensation values are simulated using structured algorithmic transf
 
 ## Project Repository Structure
 
-## 🛠️ Project Repository Structure
-
-## 🛠️ Project Repository Structure
 
 ```text
 PathFinderAI/
