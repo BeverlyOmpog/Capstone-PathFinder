@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathFinderAI - Student Performance Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">🎯 PathFinderAI</a>
+        <ul class="navbar-nav">
+            <li><a href="/about" class="nav-link">About</a></li>
+            <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+            <li><a href="/predictor" class="nav-link">Predictor</a></li>
+            <li><a href="/skillsanalysis" class="nav-link">Skills Analysis</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-index">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title-index">Welcome to PathFinderAI</h1>
+                <p class="hero-subtitle-index">
+                    Predict student performance and analyze skills with AI-powered insights
+                </p>
+                <div class="hero-buttons">
+                    <a href="/predictor" class="btn btn-primary-index">Get Started →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Hero Section */
+        .hero-index {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 5rem 0 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        .hero-title-index {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle-index {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-index {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn-primary-index:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.6);
+        }
+
+        .btn-secondary-index {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid var(--accent-purple);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary-index:hover {
+            background: var(--accent-purple);
+            transform: translateY(-3px);
+        }
+
+        /* Quick Stats */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .stat-box-index {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-box-index:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+        }
+
+        .stat-box-index h3 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--accent-purple);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box-index p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Features Section */
+        .features-index {
+            padding: 4rem 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .features-grid-index {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-box {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .feature-box p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* CTA Box */
+        .cta-box-index {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            padding: 4rem 3rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .cta-box-index h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box-index p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-cta-index {
+            display: inline-block;
+            background: white;
+            color: var(--accent-purple);
+            padding: 1.2rem 3rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-cta-index:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title-index {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle-index {
+                font-size: 1.1rem;
+            }
+
+            .section-heading {
+                font-size: 2rem;
+            }
+
+            .cta-box-index h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</body>
+</html>

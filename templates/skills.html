@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills Analysis - PathFinderAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">PathFinderAI</a>
+        <ul class="navbar-nav">
+            <li><a href="/about" class="nav-link">About</a></li>
+            <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+            <li><a href="/predictor" class="nav-link">Predictor</a></li>
+            <li><a href="/skillsanalysis" class="nav-link active">Skills Analysis</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1 style="margin-bottom: 2rem;"> Skills Analysis Report</h1>
+
+        {% if student_data %}
+        <!-- Performance Chart -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <h2 style="margin-bottom: 1.5rem;">Performance Overview</h2>
+            <div class="chart-container" style="height: 450px;">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Student Input Data Summary -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <h2 style="margin-bottom: 1.5rem;">Your Input Data</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <!-- Academic Info -->
+                <div class="data-item">
+                    <label>Grading System</label>
+                    <p class="data-value">
+                        {% if student_data.grading_system == 'inverse' %}
+                        1-5 (Inverse Scale)
+                        {% elif student_data.grading_system == 'us_gpa' %}
+                        0-4 (US GPA)
+                        {% else %}
+                        Percentage (0-100)
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <div class="data-item">
+                <label>Your GWA</label>
+                    <p class="data-value">{{ student_data.gpa_original }}</p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                        (Converted GWA: {{ student_data.gpa_normalized }}/5.00)
+                    </p>
+                </div>
+                
+                <div class="data-item">
+                    <label>Course Type</label>
+                    <p class="data-value">{{ student_data.course_type }}</p>
+                </div>
+                
+                <div class="data-item">
+                    <label>Skills</label>
+                    <p class="data-value">{{ student_data.num_skills }} skill(s)</p>
+                    <div style="margin-top: 0.5rem;">
+                        {% for skill in student_data.skills %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="data-item">
+                    <label>Internships</label>
+                    <p class="data-value">{{ student_data.internships }}</p>
+                </div>
+                
+                <div class="data-item">
+                    <label>Projects</label>
+                    <p class="data-value">{{ student_data.projects }}</p>
+                </div>
+                
+                <div class="data-item">
+                    <label>Backlogs</label>
+                    <p class="data-value">{{ student_data.backlogs }}</p>
+                </div>
+                
+                <div class="data-item">
+                    <label>Resume Quality</label>
+                    <p class="data-value">{{ student_data.resume_quality }}/10</p>
+                </div>
+                
+                <div class="data-item">
+                    <label>Communication Skills</label>
+                    <p class="data-value">{{ student_data.communication_rate }}/10</p>
+                </div>
+                
+                <div class="data-item">
+                    <label>Coding Score</label>
+                    <p class="data-value">{{ student_data.coding_score }}/100</p>
+                </div>
+                
+                <div class="data-item">
+                    <label>Aptitude Score</label>
+                    <p class="data-value">{{ student_data.aptitude_score }}/100</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Strengths and Weaknesses -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <!-- Strengths -->
+            <div class="card">
+                <h2 style="margin-bottom: 1rem; color: var(--accent-green);"> Your Strengths</h2>
+                <ul style="color: var(--text-secondary); line-height: 2;">
+                    {% if student_data.gpa_normalized <= 2.00 and student_data.gpa_normalized > 0 %}
+                    <li>✅ Strong Academic Performance (GWA: {{ student_data.gpa_normalized }}/5.00)</li>
+                    {% endif %}
+                    {% if student_data.num_skills >= 3 %}
+                    <li>✅ Diverse Technical Skill Set ({{ student_data.num_skills }} skills)</li>
+                    {% endif %}
+                    {% if student_data.internships >= 2 %}
+                    <li>✅ Good Practical Experience ({{ student_data.internships }} internships)</li>
+                    {% endif %}
+                    {% if student_data.projects >= 3 %}
+                    <li>✅ Strong Project Portfolio ({{ student_data.projects }} projects)</li>
+                    {% endif %}
+                    {% if student_data.backlogs == 0 %}
+                    <li>✅ No Academic Backlogs</li>
+                    {% endif %}
+                    {% if student_data.resume_quality >= 7 %}
+                    <li>✅ Well-Crafted Resume</li>
+                    {% endif %}
+                    {% if student_data.communication_rate >= 7 %}
+                    <li>✅ Excellent Communication Skills</li>
+                    {% endif %}
+                    {% if student_data.coding_score >= 75 %}
+                    <li>✅ Strong Coding Abilities</li>
+                    {% endif %}
+                    {% if student_data.aptitude_score >= 75 %}
+                    <li>✅ High Aptitude & Problem-Solving Skills</li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <!-- Areas to Improve -->
+            <div class="card">
+                <h2 style="margin-bottom: 1rem; color: var(--accent-yellow);"> Areas to Improve</h2>
+                <ul style="color: var(--text-secondary); line-height: 2;">
+                    {% if student_data.gpa_normalized < 3.0 %}
+                    <li>⚠️ Academic Performance needs improvement</li>
+                    {% endif %}
+                    {% if student_data.num_skills < 2 %}
+                    <li>⚠️ Limited technical skills - learn more technologies</li>
+                    {% endif %}
+                    {% if student_data.internships < 1 %}
+                    <li>⚠️ Lack of internship experience</li>
+                    {% endif %}
+                    {% if student_data.projects < 2 %}
+                    <li>⚠️ Build more projects for your portfolio</li>
+                    {% endif %}
+                    {% if student_data.backlogs > 0 %}
+                    <li>⚠️ Clear your academic backlogs</li>
+                    {% endif %}
+                    {% if student_data.resume_quality < 6 %}
+                    <li>⚠️ Improve your resume quality</li>
+                    {% endif %}
+                    {% if student_data.communication_rate < 6 %}
+                    <li>⚠️ Work on communication skills</li>
+                    {% endif %}
+                    {% if student_data.coding_score < 60 %}
+                    <li>⚠️ Practice coding regularly to improve</li>
+                    {% endif %}
+                    {% if student_data.aptitude_score < 60 %}
+                    <li>⚠️ Strengthen aptitude and logical reasoning</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        <script>
+            // Performance Chart - Bar Chart showing strengths and weaknesses
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            const studentData = JSON.parse('{{ student_data|tojson|safe }}');
+            
+            // Calculate percentages for visualization
+            // Calculate GPA percentage dynamically based on the grading system used
+            let gpaPercent = 0;
+            if (studentData.grading_system === 'inverse') {
+                // 1-5 Scale: 1.0 -> 100%, 3.0 -> 75% (Barely Passed threshold), 5.0 -> 0%
+                // Formula: ((5.0 - grade) / 4.0) * 50 + 50
+                gpaPercent = ((5.0 - parseFloat(studentData.gpa_original)) / 2.0) * 25 + 50;
+            } else if (studentData.grading_system === 'us_gpa') {
+                // 0-4 Scale: 4.0 -> 100%, 1.0 -> 75% (Barely Passed threshold), 0.0 -> 0%
+                let rawGpa = parseFloat(studentData.gpa_original);
+                if (rawGpa >= 1.0) {
+                    gpaPercent = 75 + ((rawGpa - 1.0) / 3.0) * 25;
+                } else {
+                    gpaPercent = (rawGpa / 1.0) * 75;
+                }
+            } else {
+                // 0-100 Percentage Scale: 75 is Barely Passed. Keep raw value.
+                gpaPercent = parseFloat(studentData.gpa_original);
+            }
+            const skillsPercent = (studentData.num_skills / 4) * 100; // Max 4 skills
+            const internshipsPercent = Math.min((studentData.internships / 3) * 100, 100); // Max 3
+            const projectsPercent = Math.min((studentData.projects / 5) * 100, 100); // Max 5
+            const backlogsPercent = Math.max(100 - (studentData.backlogs * 25), 0); // Inverse
+            const resumePercent = studentData.resume_quality * 10;
+            const communicationPercent = studentData.communication_rate * 10;
+            const codingPercent = studentData.coding_score;
+            const aptitudePercent = studentData.aptitude_score;
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'GPA',
+                        'Technical Skills',
+                        'Internships',
+                        'Projects',
+                        'No Backlogs',
+                        'Resume Quality',
+                        'Communication',
+                        'Coding Score',
+                        'Aptitude'
+                    ],
+                    datasets: [{
+                        label: 'Your Score (%)',
+                        data: [
+                            gpaPercent,
+                            skillsPercent,
+                            internshipsPercent,
+                            projectsPercent,
+                            backlogsPercent,
+                            resumePercent,
+                            communicationPercent,
+                            codingPercent,
+                            aptitudePercent
+                        ],
+                        // Standardized 3-Color Mapping across all traits
+                        backgroundColor: [
+                            // 1. GPA Bar Rule (Checks the actual original system values)
+                            studentData.grading_system === 'inverse' ? 
+                                (parseFloat(studentData.gpa_original) < 3.0 ? '#10b981' : (parseFloat(studentData.gpa_original) == 3.0 ? '#f97316' : '#ef4444')) :
+                            studentData.grading_system === 'us_gpa' ? 
+                                (parseFloat(studentData.gpa_original) > 1.0 ? '#10b981' : (parseFloat(studentData.gpa_original) == 1.0 ? '#f97316' : '#ef4444')) :
+                                (parseFloat(studentData.gpa_original) > 75 ? '#10b981' : (parseFloat(studentData.gpa_original) == 75 ? '#f97316' : '#ef4444')),
+                            
+                            // 2. Standard Metric Bars (Green > 75% | Orange 50% to 75% | Red < 50%)
+                            skillsPercent > 50 ? '#10b981' : (skillsPercent == 50 ? '#f97316' : '#ef4444'),        // Technical Skills
+                            internshipsPercent > 50 ? '#10b981' : (internshipsPercent == 50 ? '#f97316' : '#ef4444'), // Internships
+                            projectsPercent > 50 ? '#10b981' : (projectsPercent == 50 ? '#f97316' : '#ef4444'),       // Projects
+                            backlogsPercent > 50 ? '#10b981' : (backlogsPercent == 50 ? '#f97316' : '#ef4444'),       // No Backlogs
+                            resumePercent > 50 ? '#10b981' : (resumePercent == 50 ? '#f97316' : '#ef4444'),          // Resume Quality
+                            communicationPercent > 50 ? '#10b981' : (communicationPercent == 50 ? '#f97316' : '#ef4444'), // Communication
+                            codingPercent > 50 ? '#10b981' : (codingPercent == 50 ? '#f97316' : '#ef4444'),          // Coding Score
+                            aptitudePercent > 50 ? '#10b981' : (aptitudePercent == 50 ? '#f97316' : '#ef4444')        // Aptitude
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#1a1a2e'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: 'Green = Passed (>75%) | Orange = Barely Passed / Borderline (50% - 75%) | Red = Failed (<50%)',
+                            color: '#9ca3af',
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            grid: {
+                                color: '#2d3748'
+                            },
+                            ticks: {
+                                color: '#9ca3af',
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#9ca3af',
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        </script>
+
+        {% else %}
+        <!-- No Data State -->
+        <div class="card" style="text-align: center; padding: 4rem 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📊</div>
+            <h2 style="margin-bottom: 1rem;">No Analysis Data Available</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Please submit your information in the Predictor first to view your skills analysis
+            </p>
+            <a href="/predictor" class="btn btn-primary">Go to Predictor</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <style>
+        .data-item {
+            background: var(--bg-secondary);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--accent-purple);
+        }
+        
+        .data-item label {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .data-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+</body>
+</html>

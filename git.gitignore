@@ -1,0 +1,10 @@
+# Local Environment Packages
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Operating System temporary logs
+.DS_Store
+Thumbs.db

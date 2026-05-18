@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictor - PathPredictor AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">PathFinderAI</a>
+        <ul class="navbar-nav">
+            <li><a href="/about" class="nav-link">About</a></li>
+            <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+            <li><a href="/predictor" class="nav-link active">Predictor</a></li>
+            <li><a href="/skillsanalysis" class="nav-link">Skills Analysis</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="card" style="max-width: 900px; margin: 2rem auto;">
+            <h1 style="margin-bottom: 0.5rem;"> Predict Your Career Path</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                Enter your academic and skill details to get AI-powered salary predictions across different company types
+            </p>
+
+            <form method="POST" action="/predict" id="predictorForm">
+                <!-- Grading System Selection -->
+                <div class="form-group">
+                    <label for="grading_system">Grading System Used</label>
+                    <select id="grading_system" name="grading_system" class="form-control" required onchange="updateGPAPlaceholder()">
+                        <option value="">Select Grading System</option>
+                        <option value="inverse">1-5 (Inverse Scale) - 1 is highest</option>
+                        <option value="us_gpa">0-4 (US / Traditional GPA) - 4 is highest</option>
+                        <option value="percentage">0-100 (Percentage) - 100 is highest</option>
+                    </select>
+                </div>
+
+                <!-- GPA Input -->
+                <div class="form-group">
+                    <label for="gpa">Your GPA</label>
+                    <input type="number" id="gpa" name="gpa" class="form-control" 
+                           step="0.01" required placeholder="Enter your GPA based on selected grading system">
+                    <small id="gpaHint" style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.25rem; display: block;"></small>
+                </div>
+
+                <!-- Course Type -->
+                <div class="form-group">
+                    <label for="course_type">Course Type</label>
+                    <select id="course_type" name="course_type" class="form-control" required>
+                        <option value="">Select Your Course</option>
+                        <option value="BS Computer Engineering">BS in Computer Engineering</option>
+                        <option value="BS Computer Science">BS in Computer Science</option>
+                        <option value="BS Information Systems">BS in Information Systems</option>
+                        <option value="BS Information Technology">BS in Information Technology</option>
+                    </select>
+                </div>
+
+                <!-- Skills Multi-Select -->
+                <div class="form-group">
+                    <label>Skills (Select all that apply)</label>
+                    <div class="skills-checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="Web Development">
+                            <span>Web Development</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="Python">
+                            <span>Python</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="Data Structures and Algorithms">
+                            <span>Data Structures & Algorithms</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="Machine Learning">
+                            <span>Machine Learning</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Numbers: Internships, Projects, Backlogs -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label for="internships">Number of Internships</label>
+                        <input type="number" id="internships" name="internships" class="form-control" 
+                               min="0" value="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="projects">Number of Projects</label>
+                        <input type="number" id="projects" name="projects" class="form-control" 
+                               min="0" value="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="backlogs">Number of Backlogs</label>
+                        <input type="number" id="backlogs" name="backlogs" class="form-control" 
+                               min="0" value="0" required>
+                    </div>
+                </div>
+
+                <!-- Resume Quality Slider -->
+                <div class="form-group">
+                    <label for="resume_quality">Resume Quality (0-10): <span id="resumeValue">5</span></label>
+                    <input type="range" id="resume_quality" name="resume_quality" 
+                           min="0" max="10" value="5" class="slider" 
+                           oninput="document.getElementById('resumeValue').textContent = this.value">
+                </div>
+                <!-- Communication Rate Slider -->
+                <div class="form-group">
+                    <label for="communication_rate">Communication Skills (0-10): <span id="commValue">5</span></label>
+                    <input type="range" id="communication_rate" name="communication_rate" 
+                           min="0" max="10" value="5" class="slider" 
+                           oninput="document.getElementById('commValue').textContent = this.value">
+                </div>
+
+                <!-- Coding Score Slider -->
+                <div class="form-group">
+                    <label for="coding_score">Coding Score (0-100): <span id="codingValue">50</span></label>
+                    <input type="range" id="coding_score" name="coding_score" 
+                           min="0" max="100" value="50" class="slider" 
+                           oninput="document.getElementById('codingValue').textContent = this.value">
+                </div>
+
+                <!-- Aptitude Score Slider -->
+                <div class="form-group">
+                    <label for="aptitude_score">Aptitude Score (0-100): <span id="aptitudeValue">50</span></label>
+                    <input type="range" id="aptitude_score" name="aptitude_score" 
+                           min="0" max="100" value="50" class="slider" 
+                           oninput="document.getElementById('aptitudeValue').textContent = this.value">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                     Predict My Career Path
+                </button>
+            </form>
+
+            <!-- Prediction Results -->
+            {% if prediction %}
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--border-color);">
+                <h2 style="text-align: center; margin-bottom: 2rem;"> Your Career Predictions</h2>
+
+                <!-- Placement Status -->
+                <div class="placement-status {{ 'placed' if prediction.placement_status == 'Placed' else 'unplaced' }}">
+                    <h3>{{ prediction.placement_status }}</h3>
+                    <p>{{ prediction.placement_message }}</p>
+                </div>
+
+                {% if prediction.placement_status == 'Placed' %}
+                <!-- Salary Predictions by Company Type -->
+                <div class="salary-predictions">
+                    <h3 style="margin-bottom: 1.5rem;"> Expected Monthly Salary by Company Type</h3>
+                    <div class="salary-grid">
+                        <div class="salary-card">
+                            <div class="company-icon">🏢</div>
+                            <h4>Multinational Corporation</h4>
+                            <p class="salary-amount">₱{{ prediction.salary_mnc }}</p>
+                        </div>
+                        <div class="salary-card">
+                            <div class="company-icon">🏛️</div>
+                            <h4>Mid-Size Company</h4>
+                            <p class="salary-amount">₱{{ prediction.salary_midsize }}</p>
+                        </div>
+                        <div class="salary-card">
+                            <div class="company-icon">🚀</div>
+                            <h4>Startup Company</h4>
+                            <p class="salary-amount">₱{{ prediction.salary_startup }}</p>
+                        </div>
+                        <div class="salary-card">
+                            <div class="company-icon">⭐</div>
+                            <h4>Top Tech Company</h4>
+                            <p class="salary-amount">₱{{ prediction.salary_toptech }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Weakness Analysis -->
+                <div class="weakness-analysis">
+                    <h3 style="margin-bottom: 1rem;"> Areas for Improvement</h3>
+                    {% if prediction.weaknesses %}
+                    <div class="weaknesses-list">
+                        {% for weakness in prediction.weaknesses %}
+                        <div class="weakness-item">
+                            <div class="weakness-header">
+                                <span class="weakness-icon">⚠️</span>
+                                <strong>{{ weakness.area }}</strong>
+                            </div>
+                            <p class="weakness-message">{{ weakness.message }}</p>
+                            <ul class="improvement-tips">
+                                {% for tip in weakness.tips %}
+                                <li>{{ tip }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <p style="color: var(--accent-green); text-align: center; padding: 1rem;">
+                        ✅ Excellent! Your profile is strong across all areas. Keep up the great work!
+                    </p>
+                    {% endif %}
+                </div>
+
+                <!-- Recommendations for Unplaced -->
+                {% if prediction.placement_status == 'Unplaced' and prediction.recommendations %}
+                <div class="recommendations">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent-yellow);">💡 Priority Recommendations</h3>
+                    <ul class="recommendations-list">
+                        {% for rec in prediction.recommendations %}
+                        <li>{{ rec }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        {% if prediction and prediction.placement_status == 'Placed' %}
+        <div class="card" style="margin-top: 1.5rem; background: linear-gradient(135deg, #1e1b4b, #311042); border-left: 5px solid #10b981; padding: 1.5rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="font-size: 2.5rem;"></div>
+                <div>
+                    <h3 style="margin: 0; font-size: 0.9rem; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.05em;">Matched Career Track</h3>
+                    <h2 style="margin: 0.25rem 0 0 0; font-size: 1.75rem; color: #ffffff; font-weight: 700;">
+                        {{ prediction.job_role }}
+                    </h2>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 0.85rem; color: #cbd5e1;">
+                        Based on your technical profile vectors, you cluster most strongly with successful tech professionals in this specialization area.
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function updateGPAPlaceholder() {
+            const gradingSystem = document.getElementById('grading_system').value;
+            const gpaInput = document.getElementById('gpa');
+            const gpaHint = document.getElementById('gpaHint');
+            
+            if (gradingSystem === 'inverse') {
+                gpaInput.placeholder = 'Enter GPA (1.0 - 5.0, where 1.0 is highest)';
+                gpaInput.min = '1.0';
+                gpaInput.max = '5.0';
+                gpaHint.textContent = 'Example: 1.5 (excellent), 3.0 (average)';
+            } else if (gradingSystem === 'us_gpa') {
+                gpaInput.placeholder = 'Enter GPA (0.0 - 4.0, where 4.0 is highest)';
+                gpaInput.min = '0.0';
+                gpaInput.max = '4.0';
+                gpaHint.textContent = 'Example: 3.5 (excellent), 2.5 (average)';
+            } else if (gradingSystem === 'percentage') {
+                gpaInput.placeholder = 'Enter Percentage (0 - 100)';
+                gpaInput.min = '0';
+                gpaInput.max = '100';
+                gpaHint.textContent = 'Example: 85% (excellent), 70% (average)';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - PathFinderAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="/" class="navbar-brand">PathFinderAI</a>
+        <ul class="navbar-nav">
+            <li><a href="/about" class="nav-link active">About</a></li>
+            <li><a href="/dashboard" class="nav-link">Dashboard</a></li>
+            <li><a href="/predictor" class="nav-link">Predictor</a></li>
+            <li><a href="/skillsanalysis" class="nav-link">Skills Analysis</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Epic Hero Section with Particles Effect -->
+        <div class="about-hero-epic">
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="hero-content-epic">
+                <div class="logo-container">
+                    <div class="logo-circle">
+                        <span class="logo-text">AI</span>
+                    </div>
+                </div>
+                <h1 class="epic-title">
+                    <span class="title-line">Path</span><span class="title-line gradient">Finder</span><span class="title-line">AI</span>
+                </h1>
+                <p class="epic-subtitle">Decoding the Skill-to-Salary Matrix for Future IT Professionals</p>
+                <div class="tech-stack">
+                    <span class="tech-badge"> Machine Learning</span>
+                    <span class="tech-badge"> Big Data Analytics</span>
+                    <span class="tech-badge"> Career Intelligence</span>
+                </div>
+                <a href="/predictor" class="cta-button-hero">
+                    <span>Start Your Journey</span>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+            <div class="wave-bg">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="wave-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="wave-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="wave-fill"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Live Stats Counter -->
+        <div class="stats-counter">
+            <div class="stat-counter-item">
+                <div class="counter-number" data-target="9000">0</div>
+                <div class="counter-label">Professionals Analyzed</div>
+                <div class="counter-bar">
+                    <div class="counter-progress" style="width: 100%; background: var(--accent-purple);"></div>
+                </div>
+            </div>
+            <div class="stat-counter-item">
+                <div class="counter-number" data-target="89">0</div>
+                <div class="counter-suffix">%</div>
+                <div class="counter-label">Model Accuracy</div>
+                <div class="counter-bar">
+                    <div class="counter-progress" style="width: 92%; background: var(--accent-green);"></div>
+                </div>
+            </div>
+            <div class="stat-counter-item">
+                <div class="counter-number" data-target="7702">0</div>
+                <div class="counter-label">Successfully Placed</div>
+                <div class="counter-bar">
+                    <div class="counter-progress" style="width: 85.6%; background: var(--accent-blue);"></div>
+                </div>
+            </div>
+            <div class="stat-counter-item">
+                <div class="counter-number" data-target="3">0</div>
+                <div class="counter-label">ML Algorithms</div>
+                <div class="counter-bar">
+                    <div class="counter-progress" style="width: 100%; background: var(--accent-yellow);"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission with Animated Card -->
+        <div class="about-section">
+            <h2 class="section-title-modern">
+                <span class="title-decorator"></span>
+                <span>Our Mission</span>
+                <span class="title-decorator"></span>
+            </h2>
+            <div class="mission-card-modern">
+                
+                <p class="mission-text-large">
+                    PathFinderAI revolutionizes career planning for IT students through cutting-edge machine learning. 
+                    We decode the complex relationship between skills, academics, and market demand to provide 
+                    <span class="highlight">data-driven career insights</span> that empower students to make informed 
+                    decisions about their future.
+                </p>
+            </div>
+        </div>
+
+        <!-- Algorithms Showcase -->
+        <div class="about-section">
+            <h2 class="section-title-modern">
+                <span class="title-decorator"></span>
+                <span>Powered by Advanced ML</span>
+                <span class="title-decorator"></span>
+            </h2>
+            <div class="algo-showcase">
+                <div class="algo-card-modern">
+                    <div class="algo-number">01</div>
+                    <div class="algo-icon-modern"></div>
+                    <h3>Random Forest Classifier</h3>
+                    <p>Ensemble learning method that constructs multiple decision trees to predict placement probability with exceptional accuracy</p>
+                    <div class="algo-stats">
+                        <span class="stat-pill">Classification</span>
+                        <span class="stat-pill">High Accuracy</span>
+                    </div>
+                </div>
+                <div class="algo-card-modern">
+                    <div class="algo-number">02</div>
+                    <div class="algo-icon-modern"></div>
+                    <h3>Multiple Linear Regression</h3>
+                    <p>Statistical model that predicts salary ranges across different company types based on student profile metrics</p>
+                    <div class="algo-stats">
+                        <span class="stat-pill">Regression</span>
+                        <span class="stat-pill">Salary Prediction</span>
+                    </div>
+                </div>
+                <div class="algo-card-modern">
+                    <div class="algo-number">03</div>
+                    <div class="algo-icon-modern"></div>
+                    <h3>K-Nearest Neighbors</h3>
+                    <p>Pattern recognition algorithm that identifies similar profiles to provide personalized career recommendations</p>
+                    <div class="algo-stats">
+                        <span class="stat-pill">Pattern Matching</span>
+                        <span class="stat-pill">Personalized</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="about-section">
+            <h2 class="section-title-modern">
+                <span class="title-decorator"></span>
+                <span>What Makes Us Different</span>
+                <span class="title-decorator"></span>
+            </h2>
+            <div class="features-modern">
+                <div class="feature-modern">
+                    <div class="feature-icon-container purple-gradient">
+                        <span class="feature-emoji">🎓</span>
+                    </div>
+                    <h4>Multi-Factor Analysis</h4>
+                    <p>10+ parameters including GPA, skills, projects, internships, coding ability, and communication</p>
+                </div>
+                <div class="feature-modern">
+                    <div class="feature-icon-container blue-gradient">
+                        <span class="feature-emoji">💰</span>
+                    </div>
+                    <h4>Company-Specific Salaries</h4>
+                    <p>Separate predictions for MNCs, Mid-size, Startups, and Top Tech companies</p>
+                </div>
+                <div class="feature-modern">
+                    <div class="feature-icon-container green-gradient">
+                        <span class="feature-emoji">🔍</span>
+                    </div>
+                    <h4>Weakness Detection</h4>
+                    <p>Pinpoint exact areas needing improvement with actionable development strategies</p>
+                </div>
+                <div class="feature-modern">
+                    <div class="feature-icon-container yellow-gradient">
+                        <span class="feature-emoji">🚀</span>
+                    </div>
+                    <h4>Personalized Roadmap</h4>
+                    <p>Custom recommendations tailored to your unique profile for maximum success</p>
+                </div>
+                <div class="feature-modern">
+                    <div class="feature-icon-container pink-gradient">
+                        <span class="feature-emoji">📊</span>
+                    </div>
+                    <h4>Visual Analytics</h4>
+                    <p>Interactive charts and graphs showing your strengths and improvement areas</p>
+                </div>
+                <div class="feature-modern">
+                    <div class="feature-icon-container orange-gradient">
+                        <span class="feature-emoji">⚡</span>
+                    </div>
+                    <h4>Instant Predictions</h4>
+                    <p>Real-time AI predictions in seconds with detailed breakdown and insights</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Who Benefits -->
+        <div class="about-section">
+            <h2 class="section-title-modern">
+                <span class="title-decorator"></span>
+                <span>Who Can Benefit</span>
+                <span class="title-decorator"></span>
+            </h2>
+            <div class="benefits-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">🎓</div>
+                    <div class="timeline-content">
+                        <h4>IT Students</h4>
+                        <p>Make informed decisions about skill development, course selection, and career planning with data-backed insights</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🏫</div>
+                    <div class="timeline-content">
+                        <h4>Educational Institutions</h4>
+                        <p>Track student performance, identify at-risk students, and improve overall placement rates with analytics</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">💼</div>
+                    <div class="timeline-content">
+                        <h4>Career Counselors</h4>
+                        <p>Provide evidence-based guidance backed by machine learning predictions and market trends</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon">🔍</div>
+                    <div class="timeline-content">
+                        <h4>Recruiters</h4>
+                        <p>Identify top talent with predicted performance metrics and skill assessments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <style>
+        /* Epic Hero Section */
+        .about-hero-epic {
+            position: relative;
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 25%, #16213e 50%, #1a1a2e 75%, #0f0f1e 100%);
+            padding: 5rem 2rem;
+            border-radius: 2rem;
+            margin-bottom: 4rem;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            animation: float-particle 15s infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 60%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 70%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 80%; animation-delay: 2.5s; }
+        .particle:nth-child(8) { left: 90%; animation-delay: 4.5s; }
+
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100px) scale(1); }
+        }
+
+        .hero-content-epic {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .logo-container {
+            margin-bottom: 2rem;
+            animation: pulse-logo 3s infinite;
+        }
+
+        @keyframes pulse-logo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .logo-circle {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.6);
+            border: 4px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .logo-text {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+        }
+
+        .epic-title {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .title-line {
+            display: inline-block;
+            margin: 0 0.25rem;
+            animation: title-slide-in 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .title-line:nth-child(1) { animation-delay: 0.2s; color: white; }
+        .title-line:nth-child(2) { 
+            animation-delay: 0.4s; 
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .title-line:nth-child(3) { animation-delay: 0.6s; color: white; }
+
+        @keyframes title-slide-in {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .epic-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            animation: fade-in 1s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fade-in {
+            to { opacity: 1; }
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .tech-badge {
+            background: rgba(139, 92, 246, 0.15);
+            border: 2px solid var(--accent-purple);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            animation: badge-appear 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .tech-badge:nth-child(1) { animation-delay: 1s; }
+        .tech-badge:nth-child(2) { animation-delay: 1.2s; }
+        .tech-badge:nth-child(3) { animation-delay: 1.4s; }
+
+        @keyframes badge-appear {
+            to { opacity: 1; transform: translateY(0); }
+            from { transform: translateY(20px); }
+        }
+
+        .cta-button-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 3rem;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+            animation: fade-in 1s ease-out 1.6s forwards;
+            opacity: 0;
+        }
+
+        .cta-button-hero:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
+        }
+
+        .arrow {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button-hero:hover .arrow {
+            transform: translateX(5px);
+        }
+
+        .wave-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave-bg svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 120px;
+        }
+
+        .wave-fill {
+            fill: var(--bg-primary);
+        }
+
+        /* Stats Counter */
+        .stats-counter {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 1.5rem;
+            border: 2px solid var(--border-color);
+        }
+
+        .stat-counter-item {
+            text-align: center;
+        }
+
+        .counter-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .counter-suffix {
+            font-size: 2rem;
+            color: var(--accent-purple);
+            display: inline-block;
+        }
+
+        .counter-label {
+            color: var(--text-secondary);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .counter-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--bg-secondary);
+            border-radius: 3px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+
+        .counter-progress {
+            height: 100%;
+            border-radius: 3px;
+            animation: progress-fill 2s ease-out forwards;
+            transform-origin: left;
+        }
+
+        @keyframes progress-fill {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        /* Section Titles */
+        .section-title-modern {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .title-decorator {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+        }
+
+        /* Mission Card */
+        .mission-card-modern {
+            background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
+            padding: 3rem;
+            border-radius: 1.5rem;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-card-modern::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .mission-icon-large {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-text-large {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--text-secondary);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .highlight {
+            color: var(--accent-purple);
+            font-weight: 700;
+        }
+
+        /* Algorithm Showcase */
+        .algo-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .algo-card-modern {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            border: 2px solid var(--border-color);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .algo-card-modern:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent-purple);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
+
+        .algo-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(139, 92, 246, 0.1);
+        }
+
+        .algo-icon-modern {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .algo-card-modern h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-purple);
+        }
+
+        .algo-card-modern p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .algo-stats {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-pill {
+            background: var(--accent-purple);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Features Modern */
+        .features-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-modern {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid var(--border-color);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-modern:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon-container {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .purple-gradient { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .blue-gradient { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .green-gradient { background: linear-gradient(135deg, #10b981, #059669); }
+        .yellow-gradient { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+        .pink-gradient { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .orange-gradient { background: linear-gradient(135deg, #f97316, #ea580c); }
+
+        .feature-modern h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-modern p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Timeline */
+        .benefits-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .benefits-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid var(--border-color);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent-purple);
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            padding: 5rem 3rem;
+            border-radius: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 4rem;
+        }
+
+        .cta-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .decoration-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            right: -100px;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            left: -50px;
+            animation: float 10s infinite ease-in-out reverse;
+        }
+
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 10%;
+            animation: float 12s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .cta-description {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+
+        .cta-button-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 3rem;
+            background: white;
+            color: var(--accent-purple);
+            text-decoration: none;
+            border-radius: 3rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button-large:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .button-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .epic-title {
+                font-size: 3rem;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+            }
+            
+            .benefits-timeline::before {
+                left: 40px;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Counter Animation */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+
+    <script>
+        // Animated Counter
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('.counter-number');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target.toLocaleString();
+                    }
+                };
+                
+                setTimeout(updateCounter, 500);
+            });
+        });
+    </script>
+</body>
+</html>
